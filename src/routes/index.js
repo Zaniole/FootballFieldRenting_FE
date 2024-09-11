@@ -10,7 +10,8 @@ export const routes = [
     {
         path: '/',
         page: HomePage,
-        isShowHeader: true
+        isShowHeader: true,
+        isShowFooter: true
     },
     {
         path: '/order',
@@ -30,12 +31,12 @@ export const routes = [
     {
         path: '/signIn',
         page: SignInPage,
-        isShowHeader: true
+        isShowHeader: false
     },
     {
         path: '/signUp',
         page: SignUpPage,
-        isShowHeader: true
+        isShowHeader: false
     },
     {
         path: '*',

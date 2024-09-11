@@ -13,15 +13,18 @@ export function App() {
             const Page = route.page
             const Layout = route.isShowHeader ? DefaultComponent : Fragment
             return (
-              <Route key={index} path={route.path} element={
-                <Layout>
-                  <Page />
-                </Layout>
-              } />
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+                }
+              />
             )
           })}
         </Routes>
-
       </Router>
     </div>
   )

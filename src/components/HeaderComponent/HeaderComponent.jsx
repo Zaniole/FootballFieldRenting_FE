@@ -1,38 +1,34 @@
 import React from 'react'
-import { WrapperHeader, WrapperTextHeader } from './style'
-import { Col } from 'antd'
-import { HomeOutlined } from '@ant-design/icons'
+import { Col, Image, Flex } from 'antd'
+import logo from '../../assets/images/logo.png';
+import {ReactComponent as FootballFieldIcon} from '../../assets/images/football-field.svg'; 
+import './style.css'
+import { FormOutlined, UserOutlined } from '@ant-design/icons'
 
 const HeaderComponent = () => {
   return (
-    <WrapperHeader>
-      <Col span={5}>
-        <WrapperTextHeader>
-          <HomeOutlined />
-          Trang Chủ
-        </WrapperTextHeader>
-      </Col>
-      <Col span={5}>
-        <WrapperTextHeader>
+    <Flex className='header' justify='space-between' align='center'>
+      <div className='header-logo'>
+        <Image
+          src={logo}
+          preview={false}
+        />
+      </div>
+      <Flex justify='space-around' align='center' className='header-main' gap='64px'>
+        <span>
+          <FootballFieldIcon className='icon'/>
           Danh sách sân bóng
-        </WrapperTextHeader>
-      </Col>
-      <Col span={5}>
-        <WrapperTextHeader>
-          Đăng ký cho thuê sân
-        </WrapperTextHeader>
-      </Col>
-      <Col span={5}>
-        <WrapperTextHeader>
-          Đăng nhập/Đăng ký
-        </WrapperTextHeader>
-      </Col>
-      <Col span={4}>
-        <WrapperTextHeader>
-          Giỏ hàng
-        </WrapperTextHeader>
-      </Col>
-    </WrapperHeader>
+        </span>
+        <span>
+          <FormOutlined />
+          Đăng ký sân
+        </span>
+        <span>
+          <UserOutlined />
+          Tài khoản
+        </span>
+      </Flex>
+    </Flex>
   )
 }
 

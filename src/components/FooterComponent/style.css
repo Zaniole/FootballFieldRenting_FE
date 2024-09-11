@@ -1,0 +1,27 @@
+.footer {
+    background-color: white;
+    margin-top: 16px;
+    padding: 16px 0px 0px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer-div {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-logo {
+    cursor: pointer;
+}
+
+.footer-copyright {
+    background-color: #E77715;
+    color: white;
+    margin: 0 0;
+    text-align: center;
+    padding: 8px;
+}
+
+.footer-div h4 {
+    margin-top: 0;
+}
