@@ -1,11 +1,11 @@
 .header {
-    background-color: #f6f6f6;
-    box-shadow: 0 1px rgba(0, 0, 0, 50%);
-
+    background-color: #fff;
+    box-shadow: 0 1px #E77715;
+    height: 80px;
 }
 
 .header-logo {
-    width: 400px;
+    width: 300px;
     padding: 8px 24px;
     cursor: pointer;
 }
@@ -13,24 +13,34 @@
 .header-main {
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
-    color: #008CBA;
     font-weight: bold;
     text-align: left;
     padding-right: 16px;
 }
 
-.header-main span {
+.header-main-link {
     display: flex;
     align-items: center;
     gap: 4px;
-    
+    color: #008CBA;
 }
 
-.header-main span:hover {
+.header-main-link:hover {
     color: #E77715;
     cursor: pointer;
 }
 
-.header-main span:hover .icon {
+.header-main-link:hover .icon {
     fill: #E77715;
+}
+
+.dropdown-menu-item {
+  font-size: 16px;
+  color: #008CBA;
+}
+
+.dropdown-menu-item:hover {
+  background-color: #f0f0f0;
+  color: #E77715;
+  font-weight: 500;
 }

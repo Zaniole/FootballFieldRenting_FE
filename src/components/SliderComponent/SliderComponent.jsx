@@ -7,7 +7,7 @@ const PrevArrow = (props) => {
     return (
         <div
             className={className}
-            style={{ ...style, display: "block", background: " rgb(37, 99, 235)", borderRadius: "50%" }}
+            style={{ ...style, display: "block", background: " #E77715", borderRadius: "50%" }}
             onClick={onClick}
         />
     );
@@ -18,40 +18,37 @@ const NextArrow = (props) => {
     return (
         <div
             className={className}
-            style={{ ...style, display: "block", background: " rgb(37, 99, 235)", borderRadius: "50%" }}
+            style={{ ...style, display: "block", background: " #E77715", borderRadius: "50%" }}
             onClick={onClick}
         />
     );
 }
 
-const SliderComponent = ({ arrImages }) => {
+const SliderComponent = ({ arrImages, imageStyle, onImageClick }) => {
     const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
+        dots: false,
+        speed: 2000,
         autoplay: true,
-        autoplaySpeed: 1500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplaySpeed: 2000,
+        cssEase: "linear",
         nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
-        arrows: false,
-        adaptiveHeight: true,
-        fade: true
+        prevArrow: <PrevArrow />
     };
     return (
         <Slider {...settings}>
             {arrImages.map((img, index) => {
                 return (
-                    <Image
-                        src={img}
-                        key={index}
-                        alt="image"
-                        preview={false}
-                        width='100%'
-                        height='600px'
-                        // height='300px'
-                    />
+                    <div key={index} style={{ padding: '0 8px'}}>
+                        <Image
+                            onClick={() => onImageClick(img)}
+                            src={img}
+                            alt={`image-${index}`}
+                            preview={false}
+                            style={{ ...imageStyle }}
+                        />
+                    </div>
                 )
             })}
         </Slider>

@@ -36,7 +36,7 @@ const HeroComponent = () => {
                             HỆ THỐNG SÂN BÓNG ĐÁ HÀ NỘI
                         </Title>
                         <Paragraph style={{ fontSize: '20px', color: '#fff', margin: '0 0 32px 64px', textAlign:'start' }}>
-                            <p><CaretRightOutlined />&nbsp;&nbsp;&nbsp;Hơn 100 sân bóng trên 20 dịa điểm</p>
+                            <p><CaretRightOutlined />&nbsp;&nbsp;&nbsp;Hơn 100 sân bóng trên 20 địa điểm</p>
                             <p><CaretRightOutlined />&nbsp;&nbsp;&nbsp;Hệ thống sân chất lượng, cơ sở vật chất hiện đại </p>
                             <p><CaretRightOutlined />&nbsp;&nbsp;&nbsp;Đa dạng dịch vụ, tiện ích, mang lại trải nghiệm tốt nhất</p>
                         </Paragraph>
