@@ -61,7 +61,8 @@ const BookingPage = () => {
 		const zaloResponse = await createTransactionZaloPay({
 			user: user,
 			amount: amount,
-			payment: payment
+			payment: payment,
+			isFindingOpponentType: false
 		})
 
 		if (zaloResponse.return_code === 1) {

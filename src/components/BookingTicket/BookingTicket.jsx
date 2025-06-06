@@ -26,28 +26,33 @@ const BookingTicket = ({ booking }) => {
 		amount: '',
 	})
 	const handleShowPayment = async () => {
-		const payment = await getPaymentByBookingId(_id);
-		if (payment.status === 'OK') {
-			if (payment.data.paymentMethod === 'later-pay') {
-				setPaymentInfo({
-					amount: payment.data.amount,
-					paymentMethod: 'Thanh toán sau'
-				})
-			} else if (payment.data.paymentMethod === 'zalopay') {
-				setPaymentInfo({
-					amount: payment.data.amount,
-					paymentMethod: 'Thanh toán qua ZaloPay'
-				})
+		try {
+			const payment = await getPaymentByBookingId(_id);
+			if (payment.status === 'OK') {
+				if (payment.data.paymentMethod === 'later-pay') {
+					setPaymentInfo({
+						amount: payment.data.amount,
+						paymentMethod: 'Thanh toán sau'
+					})
+				} else if (payment.data.paymentMethod === 'zalopay') {
+					setPaymentInfo({
+						amount: payment.data.amount,
+						paymentMethod: 'Thanh toán qua ZaloPay'
+					})
+				}
 			}
+		} catch (error) {
+			console.log(error)
 		}
+
 	}
 
 	const paymentItem = [{
 		key: 'payment',
 		label: 'Xem thêm thông tin thanh toán',
 		children: <div>
-			<p>Hình thức thanh toán: {paymentInfo.paymentMethod}</p>
-			<p>Số tiền thanh toán: {paymentInfo.amount} Việt Nam đồng</p>
+			<p>Hình thức thanh toán: <span style={{color: 'red'}}>{paymentInfo.paymentMethod}</span></p>
+			<p>Số tiền thanh toán: <span style={{color: 'red'}}>{paymentInfo.amount} </span>Việt Nam đồng</p>
 		</div>
 	}]
 
@@ -97,7 +102,7 @@ const BookingTicket = ({ booking }) => {
 					<Text strong><DollarOutlined /> Giá tiền:</Text><br />
 					<Text style={{ fontSize: 18, color: '#cf1322' }}>{totalPrice.toLocaleString()} VNĐ</Text>
 				</Col>
-				<Col span={24}>
+				<Col span={12}>
 					<Collapse items={paymentItem} onChange={handleShowPayment}></Collapse>
 				</Col>
 			</Row>

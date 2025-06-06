@@ -13,6 +13,7 @@ const BookingZaloPayPage = () => {
 	const queryParams = new URLSearchParams(location.search);
 	const status = queryParams.get("status");
 	const paymentId = queryParams.get("payment_id");
+	const isFindingOpponent = queryParams.get('is_finding_opponent') === 'true';
 
 	const [result, setResult] = useState({
 		title: '',
@@ -21,26 +22,43 @@ const BookingZaloPayPage = () => {
 	})
 
 	useEffect(() => {
-		if (status === '1') {
-			setResult({
-				title: "Đặt sân thành công",
-				subTitle: "Cảm ơn bạn đã sử dụng dịch vụ. Thông tin đặt sân đã được ghi nhận.",
-				icon: <CheckCircleTwoTone twoToneColor="#E77715" />
-			})
-		} else {
-			setResult({
-				title: "Đặt sân không thành công",
-				subTitle: "Lỗi đặt sân. Vui lòng thử lại",
-				icon: <CloseCircleTwoTone twoToneColor='#ff4d4f' />
-			})
-
-			const updatePayment = async (paymentId) => {
-				await updatePaymentStatus(paymentId, { status: 'failed' })
+		console.log(isFindingOpponent);
+		if (isFindingOpponent) {
+			if (status === '1') {
+				setResult({
+					title: "Ghép đối thủ thành công",
+					subTitle: "Cảm ơn bạn đã sử dụng dịch vụ. Thông tin ghép đối đã được ghi nhận.",
+					icon: <CheckCircleTwoTone twoToneColor="#E77715" />
+				})
+			} else {
+				setResult({
+					title: "Ghép đối không thành công",
+					subTitle: "Lỗi xảy ra khi thực hiện ghép đối. Vui lòng thử lại",
+					icon: <CloseCircleTwoTone twoToneColor='#ff4d4f' />
+				})
 			}
+		} else {
+			if (status === '1') {
+				setResult({
+					title: "Đặt sân thành công",
+					subTitle: "Cảm ơn bạn đã sử dụng dịch vụ. Thông tin đặt sân đã được ghi nhận.",
+					icon: <CheckCircleTwoTone twoToneColor="#E77715" />
+				})
+			} else {
+				setResult({
+					title: "Đặt sân không thành công",
+					subTitle: "Lỗi đặt sân. Vui lòng thử lại",
+					icon: <CloseCircleTwoTone twoToneColor='#ff4d4f' />
+				})
 
-			updatePayment(paymentId);
+				const updatePayment = async (paymentId) => {
+					await updatePaymentStatus(paymentId, { status: 'failed' })
+				}
+
+				updatePayment(paymentId);
+			}
 		}
-	}, [status, paymentId])
+	}, [status, paymentId, isFindingOpponent])
 
 	const handleBackHomePage = () => {
 		navigate('/')
